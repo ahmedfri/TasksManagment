@@ -25,6 +25,7 @@ namespace TasksManagmentApi.Controllers
             this._userManager = userManager;
             _configuration = configuration;
         }
+      
         [HttpPost]
         [Route(ApiRoute.ApplicatonUserRoutes.Register)]
         [AllowAnonymous]
@@ -47,25 +48,10 @@ namespace TasksManagmentApi.Controllers
             return Ok(new ResponseDto { StatusCode = 200, ResponseMessage = "User created successfully!" });
         }
 
-        [HttpGet]
-        [Route(ApiRoute.ApplicatonUserRoutes.GetAllEmployees)]
-        public async Task<IActionResult> GetAllEmployees()
-        {
-            var users = await _userManager.Users.ToListAsync();
-            try
-            {
-                return Ok(users);
-            }
-            catch (Exception ex)
-            {
-                BaseResponse response = new() { ResponseMessage = ex.Message, StatusCode = 401 };
-                return BadRequest(response);
-            }
-        }
         [HttpPost]
         [Route(ApiRoute.ApplicatonUserRoutes.Login)]
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto) 
         {
             var user = await _userManager.FindByNameAsync(loginDto.Username);
             if (user != null && await _userManager.CheckPasswordAsync(user, loginDto.Password))
@@ -97,6 +83,23 @@ namespace TasksManagmentApi.Controllers
                 });
             }
             return Unauthorized();
+        }
+
+
+        [HttpGet]
+        [Route(ApiRoute.ApplicatonUserRoutes.GetAllEmployees)]
+        public async Task<IActionResult> GetAllEmployees()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            try
+            {
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                BaseResponse response = new() { ResponseMessage = ex.Message, StatusCode = 401 };
+                return BadRequest(response);
+            }
         }
     }
 }
