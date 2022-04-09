@@ -34,7 +34,7 @@ namespace TasksManagmentApi.Controllers
         }
 
         [HttpGet]
-        [Route(ApiRoute.TasksRoutes.GetTasksDetailsById)]
+        [Route(ApiRoute.TasksRoutes.GetTasksDetailsById)] 
         public async Task<IActionResult> GetTaskDetailsById(int Id)
         {
             var task = await _unitOfWork.Tasks.Get(q => q.Id == Id);

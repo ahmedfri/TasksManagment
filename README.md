@@ -1,13 +1,18 @@
-AhoyHotel 
-This is a WebApi Demo Hotel relay on .Net Core 6 using Repository Pattern and Unit of Work
+TasksManagments 
+This is a WebApi Demo Tasksmanagment relay on .Net Core 6 using Repository Pattern,Unit of Work And Entity Framework
 
- - Create User a user And Login using JWT before Add Booking or use a user user credentials below form the backup DataBase, 
-  Guests need to register before booking 
+login to the Admin account with this creditional:
+User: Admin
+Password: Admin@123
+-Jwt Token Will be generated, use it for authrization before using End Points.
  - API for Register
  - API for Login
- - API for listing
- - API for searching hotel by name
- - API for Terms searching
- - API for viewing Hotel details 
- - API for placing a booking
- -Note: Test Section it is not complete yet 
+ - API for Adding/Assign Tasks
+ - API for Delete Task
+ - API for Edit Task
+ - API for listing Task
+ - API for listing Tasks By id
+ - API for Add Employments
+ - API for listing Employments
+ - API for listing Employments By id
+ Database backup is attached
